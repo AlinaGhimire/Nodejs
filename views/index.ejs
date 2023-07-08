@@ -3,10 +3,29 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
   </head>
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
-    <p>the number is <%= number %> </p>
+    
+    <div style="margin-left: 80%;width: max-content;">
+<a href="/add" class="btn btn-primacy">Add expense</a>
+    </div>
+    <div class="row">
+    <% expenseList.forEach((expense,i)=> { %>
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%=expense.title %></h5>
+        <h6 class="card-subtitle mb-2 text-muted">paid by: <%= expense.paidBy %></h6>
+        <p class="card-text"><%= expense.description %></p>
+        <p class="card-text"><%= expense.amount %></p>
+        <a href="/edit/<%= expense._id %>" class="btn btn-success">update</a>
+        <a href="/delete/<%= i %>" class="btn btn-danger"> Delete</a>
+      </div>
+      </div>
+      <% }) %>  
   </body>
 </html>
